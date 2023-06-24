@@ -23,33 +23,30 @@ if($_SESSION["user"]["role"] == "user"){
          <div class="col-12">
              <div class="row">
                  <div class="col-6"> 
-                     <h4>ADMIN DASHBOARD</h4>  
+                     <h4>DASHBOARD</h4>  
                  </div>
-                <!--  <div class="col-6">
-                      <a href="logout.php" class="btn btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-                 </div> -->
              </div>
          </div>
          <div class="col-3">
              <ul class="list-group">
-                 <li class="list-group-item" style="color:#3b7fad;">
+                 <li class="list-group-item" style="color:darkgreen;">
                      <a href="course.php" class="btn text-danger">
-                         <i class="fas fa-grip-vertical" style="color:#3b7fad;"></i> COURSES</a>
+                         <i class="fas fa-grip-vertical" style="color:darkgreen;"></i> COURSES</a>
                  </li>    
-                 <li class="list-group-item" style="color:#3b7fad;">
+                 <li class="list-group-item" style="color:darkgreen;">
                     <a href="questions.php" class="btn">
-                        <i class="fas fa-boxes"  style="color:#3b7fad;"></i> QUESTIONS</a>
+                        <i class="fas fa-boxes"  style="color:darkgreen;"></i> QUESTIONS</a>
                  </li>
-                 <li class="list-group-item" style="color:#3b7fad;">
+                 <li class="list-group-item" style="color:darkgreen;">
                         <a href="new-question.php" class="btn">
-                        <i class="fas fa-plus"  style="color:#3b7fad;"></i> ADD QUESTION</a>
+                        <i class="fas fa-plus"  style="color:darkgreen;"></i> ADD QUESTION</a>
                  </li>
              </ul>
          </div>
          <div class="col-9">
              <div class="container">
                  <h6>All Courses</h6>
-                 <a href="javascript:;" class="btn border" style="color:#3b7fad;" data-bs-toggle="modal" data-bs-target="#exampleModal">New Course</a>
+                 <a href="javascript:;" class="btn text-light border" style="background-color:darkgreen;" data-bs-toggle="modal" data-bs-target="#exampleModal">New Course</a>
                 <?php 
                     if(isset($error)) {
                     ?>
@@ -113,7 +110,7 @@ if($_SESSION["user"]["role"] == "user"){
           <form action="" method="post">
               <label for="">Title</label>
               <div class="form-group">
-                  <input type="text" class="form-control" name="name" placeholder="Enter category name" id="" required>
+                  <input type="text" class="form-control" name="name" placeholder="Enter course name" id="" required>
               </div>
               <div class="my-3">
                   <button type="submit" class="btn" style="background-color:#3b7fad;" name="add-course"><i class="fas fa-plus text-light"></i></button>
@@ -121,7 +118,7 @@ if($_SESSION["user"]["role"] == "user"){
           </form> 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" style="color: #3b7fads"  data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn text-light" style="background-color:red"  data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

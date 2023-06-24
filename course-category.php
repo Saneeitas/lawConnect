@@ -37,8 +37,8 @@ if(!isset($_SESSION["user"])){
            <div class="card-body">
          <h5 class="card-title"><?php echo $result["course_code"]; ?></h5>
          <h5 class="card-title"><?php echo $result["session"]; ?></h5>
-        <a href="view-question.php?question_id=<?php echo $result["id"]; ?>" class="btn  btn-sm" style="background-color:#3b7fad;">
-        <i class="fas fa-eye"></i> View Questio</a>
+        <a href="view-question.php?question_id=<?php echo $result["id"]; ?>" class="btn  btn-sm text-light" style="background-color:darkgreen;">
+        <i class="fas fa-eye"></i> View Question</a>
       </div>
      </div>
 </div>

@@ -41,7 +41,11 @@ if(isset($_POST["login"])){
                 //Login to dashboard
                 $_SESSION["user"] = $result;
                    if($result["role"] == "user"){
-                       header("location: all-questions.php");            
+                        if (isset($_SESSION["url"])) {
+                            $question_id = $_SESSION["url"];
+                            header("location: view-question.php?question_id=$question_id");
+                        }
+                       //header("location: view-questions.php?");            
                    }else{
                        header("location: dashboard.php");
                        } 

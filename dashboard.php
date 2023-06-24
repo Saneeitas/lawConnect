@@ -7,7 +7,7 @@ if(!isset($_SESSION["user"])){
 }
 //check if logged in as user
 if($_SESSION["user"]["role"] == "user"){
-    header("location: all-questions.php");
+    header("location: index.php");
 }
 //header links
  require "inc/header.php"; ?>
@@ -24,27 +24,24 @@ if($_SESSION["user"]["role"] == "user"){
          <div class="col-12">
              <div class="row">
                  <div class="col-6"> 
-                     <h4>ADMIN DASHBOARD</h4>  
+                     <h4>DASHBOARD</h4>  
                  </div>
-                <!--  <div class="col-6">
-                      <a href="logout.php" class="btn btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-                 </div> -->
              </div>
          </div>
          <div class="col-3">
              <ul class="list-group">
                  <div> 
-                 <li class="list-group-item" style="color:#3b7fad;">
+                 <li class="list-group-item" style="color:darkgreen;">
                      <a href="course.php" class="btn">
-                         <i class="fas fa-grip-vertical"style="color:#3b7fad;"></i> COURSES</a>
+                         <i class="fas fa-grip-vertical"style="color:darkgreen;"></i> COURSES</a>
                  </li>    
                  <li  class="list-group-item">
                      <a href="questions.php" class="btn">
-                         <i class="fas fa-boxes" style="color:#3b7fad;"></i> QUESTIONS</a>
+                         <i class="fas fa-boxes" style="color:darkgreen;"></i> QUESTIONS</a>
                  </li  class="list-group-item">
                  <li  class="list-group-item">
                       <a href="new-question.php" class="btn">
-                          <i class="fas fa-plus" style="color:#3b7fad;"></i> ADD QUESTION</a>
+                          <i class="fas fa-plus" style="color:darkgreen;"></i> ADD QUESTION</a>
                  </li>
                  </div>
              </ul>

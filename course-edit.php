@@ -38,27 +38,24 @@ if(isset($_GET["edit_id"]) && !empty($_GET["edit_id"])){
          <div class="col-12">
              <div class="row">
                  <div class="col-6"> 
-                     <h4>ADMIN DASHBOARD</h4>  
+                     <h4>DASHBOARD</h4>  
                  </div>
-                <!--  <div class="col-6">
-                      <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
-                 </div> -->
              </div>
          </div>
 
          <div class="col-3">
      <ul class="list-group">
-         <li class="list-group-item" style="color:#3b7fad;">
+         <li class="list-group-item" style="color:darkgreen;">
              <a href="course.php" class="btn text-danger">
-                 <i class="fas fa-grip-vertical" style="color:#3b7fad;"></i> COURSES</a>
+                 <i class="fas fa-grip-vertical" style="color:darkgreen;"></i> COURSES</a>
          </li>    
-         <li class="list-group-item" style="color:#3b7fad;">
-            <a href="question.php" class="btn">
-                <i class="fas fa-boxes"  style="color:#3b7fad;"></i> QUESTIONS</a>
+         <li class="list-group-item" style="color:darkgreen;">
+            <a href="questions.php" class="btn">
+                <i class="fas fa-boxes"  style="color:darkgreen;"></i> QUESTIONS</a>
          </li>
-         <li class="list-group-item" style="color:#3b7fad;">
+         <li class="list-group-item" style="color:darkgreen;">
                 <a href="new-question.php" class="btn">
-                    <i class="fas fa-plus"  style="color:#3b7fad;"></i> ADD QUESTION</a>
+                    <i class="fas fa-plus"  style="color:darkgreen;"></i> ADD QUESTION</a>
          </li>
      </ul>
  </div>
@@ -88,7 +85,7 @@ if(isset($_GET["edit_id"]) && !empty($_GET["edit_id"])){
                          placeholder="Enter new course" class="form-control" id="">
                      </div>
                      <div class="form-group">
-                         <button type="submit" style="background-color: #3b7fad" name="edit_course" class="btn btn-sm btn-primary my-2">
+                         <button type="submit" style="background-color: darkgreen" name="edit_course" class="btn btn-sm btn-primary my-2">
                              Update</button>
                      </div>
                  </form>

@@ -37,27 +37,24 @@ if(isset($_GET["edit_question_id"]) && !empty($_GET["edit_question_id"])){
          <div class="col-12">
              <div class="row">
                  <div class="col-6"> 
-                     <h4>ADMIN DASHBOARD</h4>  
+                     <h4> DASHBOARD</h4>  
                  </div>
-                <!--  <div class="col-6">
-                      <a href="logout.php" class="btn btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-                 </div> -->
              </div>
          </div>
          <div class="col-3">
     <ul class="list-group">
         <div> 
-        <li class="list-group-item" style="color:#3b7fad;">
+        <li class="list-group-item" style="color:darkgreen;">
             <a href="course.php" class="btn">
-                <i class="fas fa-grip-vertical"style="color:#3b7fad;" ></i> COURSES</a>
+                <i class="fas fa-grip-vertical"style="color:darkgreen;" ></i> COURSES</a>
         </li>    
         <li  class="list-group-item">
             <a href="questions.php" class="btn text-danger">
-                <i class="fas fa-boxes" style="color:#3b7fad;"></i> QUESTIONS</a>
+                <i class="fas fa-boxes" style="color:darkgreen;"></i> QUESTIONS</a>
         </li  class="list-group-item">
         <li  class="list-group-item">
              <a href="new-question.php" class="btn">
-                 <i class="fas fa-plus" style="color:#3b7fad;"></i> ADD QUESTION</a>
+                 <i class="fas fa-plus" style="color:darkgreen;"></i> ADD QUESTION</a>
         </li>
         </div>
     </ul>
@@ -107,18 +104,10 @@ if(isset($_GET["edit_question_id"]) && !empty($_GET["edit_question_id"])){
                                     class="form-control" id="">
                              </div>
                          </div>
-                        <!-- <div class="col-6">
-                                <div class="form-group">
-                                    <label for="">Course</label>
-                                     <input type="text" name="course_code" placeholder="Enter code"
-                                      value="<?php echo $result["course_code"] ?>"
-                                      class="form-control" id="">
-                                </div>
-                            </div>  -->
                        </div>
                          <div class="form-group">
                          <button type="submit" name="update_question" 
-                          class="btn btn-sm my-2 text-light" style="background-color:#3b7fad;">
+                          class="btn btn-sm my-2 text-light" style="background-color:darkgreen;">
                          Update</button>
                      </div>
                   </div>
