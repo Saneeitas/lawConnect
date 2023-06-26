@@ -31,11 +31,11 @@ require "inc/header.php"; ?>
                 <ul class="list-group">
                     <div>
                         <li class="list-group-item" style="color:#176B87;">
-                            <a href="course.php" class="btn text-danger">
+                            <a href="course.php" class="btn">
                                 <i class="fas fa-grip-vertical" style="color:#176B87;"></i> Department</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="overview.php" class="btn">
+                            <a href="overview.php" class="btn text-danger">
                                 <i class="fas fa-boxes" style="color:#176B87;"></i> Course Overview</a>
                         </li class="list-group-item">
                         <li class="list-group-item">
@@ -47,7 +47,6 @@ require "inc/header.php"; ?>
             </div>
             <div class="col-9">
                 <div class="container">
-                    <a href="javascript:;" class="btn text-light border" style="background-color:#176B87;" data-bs-toggle="modal" data-bs-target="#exampleModal">New Course</a>
                     <?php
                     if (isset($error)) {
                     ?>
@@ -67,29 +66,48 @@ require "inc/header.php"; ?>
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Course Name</th>
+                                <th scope="col">Course Code</th>
+                                <th scope="col">Credit Unit</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Overview</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM courses";
+                            $sql = "SELECT * FROM overview";
                             $query = mysqli_query($connection, $sql);
-                            $count = 1;
+                            $counter = 1;
                             while ($result = mysqli_fetch_assoc($query)) {
                             ?>
                                 <tr class="table-active">
-                                    <th scope="row"><?php echo $count ?></th>
-                                    <td><?php echo $result["name"]; ?></td>
+                                    <td scope="row"><?php echo $counter; ?></td>
+                                    <td scope="row">
+                                        <?php echo $result["course_title"]; ?>
+                                    </td>
+                                    <?php
+                                    $id = $result["course_id"];
+                                    $sql2 = "SELECT * FROM courses WHERE id='$id'";
+                                    $query2 = mysqli_query($connection, $sql2);
+                                    $result2 = mysqli_fetch_assoc($query2);
+                                    ?>
+                                    <td><?php echo $result["course_code"]; ?></td>
+                                    <td><?php echo $result["credit_unit"]; ?></td>
+                                    <td><?php echo $result["level"]; ?></td>
+                                    <td><?php echo $result["course_desc"]; ?></td>
+                                    <td><?php echo $result["course_overview"]; ?></td>
                                     <td>
-                                        <a href="course-edit.php? edit_id=<?php echo $result["id"] ?>">
+                                        <a href="edit-overview.php?edit_overview_id=<?php echo $result["id"] ?>">
                                             <i class="fas fa-edit"></i></a>
                                         |
-                                        <a href="course.php? delete_course=<?php echo $result["id"]; ?>">
+                                        <a href="?delete_overview=<?php echo $result["id"]; ?>">
                                             <i class="fas fa-trash-alt text-danger"></i></a>
                                     </td>
                                 </tr>
                             <?php
-                                $count++;
+                                $counter++;
                             }
                             ?>
                         </tbody>
@@ -104,22 +122,22 @@ require "inc/header.php"; ?>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New Course</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="" method="post">
                         <label for="">Title</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="Enter course name" id="" required>
+                            <input type="text" class="form-control" name="name" placeholder="Enter title" id="" required>
                         </div>
                         <div class="my-3">
-                            <button type="submit" class="btn" style="background-color:#3b7fad;" name="add-course"><i class="fas fa-plus text-light"></i></button>
+                            <button type="submit" class="btn btn-primary" name="category">Submit</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn text-light" style="background-color:red" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

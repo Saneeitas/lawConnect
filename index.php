@@ -1,92 +1,91 @@
 <?php
 session_start();
 
-//check if logged in as user
-// if($_SESSION["user"]["role"] == "user"){
-//     header("location: all-questions.php");
-// }
-
 require "inc/process.php";
 require "inc/header.php";
 ?>
 
 <div class="container">
     <?php require './pages/header-home.php'; ?>
-    <div class="container-fluid my-3">
-        <img class="d-block mx-auto mb-4" src="./img/p1.PNG" style="border-radius: 15px" alt="" width="950" height="450">
+    <div class="container-fluid my-2">
+        <div class="my-4 p-3">
+            <form action="search.php" method="post">
+                <div class="form-group d-flex justify-content-center align-items-center mx-5">
+                    <div class="input-group" style="width: 80%; height: 39px;">
+                        <input type="text" class="form-control border-white" name="search" placeholder="Input your search keyword" id="" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn text-dark" style="background-color:white; ">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <img class="d-block mx-auto my-4 mb-4" src="./img/e3.PNG" style="border-radius: 15px" alt="" width="1050" height="350">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <div class="p-3 my-3 text-center">
-                    <h3 class="display-5 fw-bold" style="color: darkgreen">PassBank</h3>
+                    <h3 class="display-5 " style="color: #176B87">Welcome to E-Learning Platform</h3>
                     <div class="col-lg-6 mx-auto">
-                        <p class="lead mb-4">A Platform for sharing pass questions, Quickly get access to all Pass Questions in different courses and sessions.</p>
+                        <p class="lead mb-4">Discover a world of knowledge at your fingertips with our comprehensive online learning platform designed specifically for university students. Whether you're looking to explore new courses, enhance your existing skills, or delve into a subject that piques your curiosity, our platform is here to support your educational journey every step of the way.</p>
                         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="p-3 my-3 text-center">
-                    <h3 class="display-5 fw-bold" style="color: darkgreen">Why Us</h3>
+            <div class="col-12">
+                <div class=" text-center">
+                    <h3 class="display-5 " style="color: #176B87">Flexible Learning Environment</h3>
                     <div class="col-lg-6 mx-auto">
-                        <p class="lead mb-4">offers a comprehensive question bank, verified content, and a supportive community, making it the ideal platform. </p>
+                        <p class="lead mb-4">We understand that today's students lead busy lives, juggling multiple commitments. That's why our platform offers flexible learning options that fit seamlessly into your schedule. Access course materials anytime, anywhere, and at your own pace. Whether you prefer to study in the comfort of your home or while on the go, our platform is accessible across various devices, ensuring that you have a consistent learning experience.</p>
                         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 
                         </div>
                     </div>
                 </div>
             </div>
-            <img class="d-block mx-auto mb-4" src="./img/p2.PNG" style="border-radius:15px" alt="" width="950" height="450">
 
         </div>
     </div>
     <div class="container-fluid my-3 " id="#question">
         <div class="row">
-            <div class="col-8 ">
+            <div class="col-12 ">
                 <div class="row">
+                    <h3 class="display-5 text-center" style="color: #176B87">Courses</h3>
                     <?php
                     //displaying the products from database
-                    $sql = "SELECT * FROM questions ORDER BY id DESC";
+                    $sql = "SELECT * FROM overview ORDER BY id DESC";
                     $query = mysqli_query($connection, $sql);
                     while ($result = mysqli_fetch_assoc($query)) {
                         //Looping through the col for multiples product
                     ?>
-                        <div class="col-4 mt-2">
-                            <div class="card">
-                                <img src="<?php echo $result["image"]; ?>" style="height:200px; width:100%" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title">Course Code: <?php echo $result["course_code"]; ?></h5>
-                                    <h5 class="card-title">Session: <?php echo $result["session"]; ?></h5>
-                                    <a href="view-question.php?question_id=<?php echo $result["id"]; ?>" class="btn btn-sm text-light" style="background-color:darkgreen;"><i class="fas fa-eye"></i> View Question</a>
+                        <?php
+                        while ($result = mysqli_fetch_assoc($query)) {
+                            $id = $result["course_id"];
+                            $sql = "SELECT * FROM courses WHERE id=$id";
+                            $query2 = mysqli_query($connection, $sql);
+                            $result2 = mysqli_fetch_assoc($query2);
+                        ?>
+                            <div class="col-4 mt-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $result["course_title"]; ?></h5>
+                                        <p class="card-title"><?php echo $result2["name"]; ?></p>
+                                        <p class="card-title"><?php echo $result["level"]; ?> Level</p>
+                                        <a href="view-course.php?course_id=<?php echo $result["id"]; ?>" class="btn btn-sm text-light" style="background-color: #176B87;">
+                                            <i class="fas fa-eye"></i> View Course
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="col">
-                <div class="border p-3 my-3">
-                    <h4 class="list-group-item" style="color:darkgreen;">
-                        <i class="fas fa-grip-vertical"></i> COURSES
-                    </h4>
-                    <ul class="list-group">
-                        <?php
-                        $sql_c = "SELECT * FROM courses ORDER BY id DESC";
-                        $query_c = mysqli_query($connection, $sql_c);
-                        while ($result_c = mysqli_fetch_assoc($query_c)) {
-                        ?>
-                            <li class="list-group-item bg-light" style="background-color:#FF6347;">
-                                <i class="fas fa-chevron-circle-right" style="color:darkgreen;"></i>
-                                <a href="course-category.php?course_category_id=<?php echo $result_c["id"]; ?>" class="btn">
-                                    <?php echo $result_c["name"] ?></a>
-                            </li>
                         <?php
                         }
                         ?>
-                    </ul>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

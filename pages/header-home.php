@@ -1,7 +1,7 @@
-<nav class="navbar navbar-light rounded sticky-top" style="background-color:darkgreen;">
-    <div class="container-fluid">
-        <a class="navbar-brand text-light" href="index.php">
-            <h5> <i class="fas fa-bars"></i> PassBank</h5>
+<nav class="navbar navbar-light rounded position-stickey" style="background-color:white;">
+    <div class="container">
+        <a class="navbar-brand text-dark" href="index.php">
+            <h5> <i class="fas fa-bars"></i></h5>
 
         </a>
         <div class="d-flex">
@@ -9,15 +9,7 @@
             if (isset($_SESSION["user"])) {
             ?>
                 <a href="logout.php" class="nav-link text-danger">
-                    <i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-            <?php
-            } else {
-            ?>
-                <a href="login.php" class="nav-link  m-1 text-light">
-                    <i class="fas fa-sign-in-alt"></i> Signin</a>
-                <br />
-                <a href="register.php" class="nav-link  m-1 text-light">
-                    <i class="fas fa-sign-in-alt"></i> Signup </a>
+                    <i class="fas fa-sign-out-alt"></i></a>
             <?php
             }
             ?>

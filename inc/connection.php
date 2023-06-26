@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$database = "passbank";
+$database = "elearning";
 $username = "root";
 $password = "";
 
