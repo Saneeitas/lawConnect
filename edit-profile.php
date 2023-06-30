@@ -2,9 +2,9 @@
 session_start();
 
 //check if user is not logged in
-// if (!isset($_SESSION["user"])) {
-//     header("location: login.php");
-// } 
+ if (!isset($_SESSION["user"])) {
+     header("location: login.php");
+ } 
 //check if logged in as user
 // if ($_SESSION["user"]["role"] == "user") {
 //     header("location: index.php");
@@ -36,26 +36,23 @@ require "inc/header.php"; ?>
 
     <div class="container p-3">
         <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-6">
-                        <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
-                    </div>
-                </div>
-            </div>
+        
            
-                <div class="col-3">
-                    <h5>Navigations</h5>
-                    <ul>
-                    <li>
-                            <a href="my-profile.php"  >Profile</a>
-                        </li>
-                        <li>
-                        <a href="view-profile.php" class="text-danger">View Profile</a>
-                    </li>
-                     
-                    </ul>
-                </div>
+            <div class="col-3" style="background-color:#3F2305; border-radius:5px;">
+    <h5 class="text-muted my-2 mx-2">Profile Settings</h5>
+    <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
+        <li style="margin-bottom: 10px;">
+            <a href="my-profile.php" class=" text-muted mx-4" style="text-decoration: none;">
+                <i class="fas fa-user-circle"></i> My Profile
+            </a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <a href="view-profile.php" style="text-decoration: none;" class="text-danger mx-4">
+                <i class="fas fa-eye"></i> View Profile
+            </a>
+        </li>
+    </ul>
+</div>
             
             <div class="col-9">
                 <div class="container">
@@ -137,7 +134,7 @@ require "inc/header.php"; ?>
                         </div>
                        
                         <div class="form-group">
-                            <button type="submit" name="update_profile" style="background-color:#10597d;" class="btn btn-sm text-white my-2">
+                            <button type="submit" name="update_profile" style="background-color:#ffffc2;" class="btn btn-sm text-dark my-2">
                                 Update Profile</button>
                         </div>
                 </div>
@@ -147,9 +144,6 @@ require "inc/header.php"; ?>
     </div>
 </div>
 
-<?php
-//footer content
-require './pages/footer-home.php'; ?>
 
 </div>
 
