@@ -1,60 +1,64 @@
 <?php
 session_start();
-require "inc/process.php";
-require "inc/header.php";
-
-if (isset($_POST["search"])) {
-    $search = $_POST["search"];
-} else {
-    $search = '';
-}
-?>
+ require "inc/process.php";
+ require "inc/header.php";
+ 
+ if(isset($_POST["search"])){
+     $search = $_POST["search"];
+ }else{
+     $search = '';
+ }
+ ?>
 
 <div class="container">
     <?php require './pages/header-home.php'; ?>
     <div class="container-fluid my-3">
         <div class="row justify-content-center">
             <div class="col-8">
-                <div class=" p-3">
+                <div class="border p-3">
                     <form action="search.php" method="post">
-                        <div class="form-group d-flex justify-content-center align-items-center mx-5">
-                            <div class="input-group" style="width: 80%; height: 39px;">
-                                <input type="text" class="form-control border-white" name="search" placeholder="Input your search keyword" id="" required>
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn text-dark" style="background-color:white; ">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <h4>Search result for: <?php echo $search; ?></h4>
+                            <input type="text" class="form-control" name="search" placeholder="Enter Search term" id=""
+                                required>
                         </div>
+                        <button type="submit" class="btn text-dark mt-2"
+                            style="background-color:#ffffc2;">Search</button>
                     </form>
                 </div>
             </div>
             <div class="col-8">
                 <div class="row">
                     <?php
-                    //displaying the search posts from database
-                    $searchterm = $_POST["search"];
-                    $sql = "SELECT * FROM overview WHERE course_title LIKE '%$searchterm%' ORDER BY id DESC";
-                    $query = mysqli_query($connection, $sql);
-                    while ($result = mysqli_fetch_assoc($query)) {
-                        //Looping through the col for multiples post
-                    ?>
-                        <div class="col-4 mt-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $result["course_title"]; ?></h5>
-                                    <!-- <p class="card-title"><?php echo $result2["name"]; ?></p> -->
-                                    <p class="card-title"><?php echo $result["level"]; ?> Level</p>
-                                    <a href="view-course.php?course_id=<?php echo $result["id"]; ?>" class="btn btn-sm text-light" style="background-color: #176B87;">
-                                        <i class="fas fa-eye"></i> View Course
-                                    </a>
-                                </div>
+              //displaying the search users from database
+              $searchterm = $_POST["search"];
+              $sql = "SELECT * FROM users WHERE name LIKE '%$searchterm%' ORDER BY id DESC";
+              $query = mysqli_query($connection,$sql);
+               while($result = mysqli_fetch_assoc($query)) { 
+                //Looping through the col for multiples users
+                ?>
+                    <div class="col-4 mt-2">
+                        <div class="card">
+                        <div class="text-center mt-4">
+                        <img src="<?php echo $result["profile_pic"] ?>" alt="Profile Picture" class="rounded-circle" style="width: 100px; height:100px">
+                            <div class="card-body">
+                                <h6 class="card-title"><?php echo $result["name"]; ?></h6>
+                                <?php 
+                                      $id = $result["category_id"];
+                                      $sql2 = "SELECT * FROM category WHERE id='$id'";
+                                      $query2 = mysqli_query($connection,$sql2);
+                                      $result2 = mysqli_fetch_assoc($query2);
+                                  ?>
+                                <p><i class="far fa-envelope"></i> <?php echo $result2["area"] ?></p>
+                                <a href="view-user.php?user_id=<?php echo $result["id"]; ?>" class="btn text-dark"
+                                    style="background-color:#ffffc2;">Connect</a>
+                            </div>
                             </div>
                         </div>
+                    </div>
                     <?php
-                    }
-                    ?>
+            }
+          ?>
                 </div>
             </div>
 
@@ -64,5 +68,5 @@ if (isset($_POST["search"])) {
 </div>
 
 <?php
-require "inc/footer.php";
-?>
+ require "inc/footer.php"; 
+ ?>
